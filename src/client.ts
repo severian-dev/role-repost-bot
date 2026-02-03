@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, GatewayIntentBits, ActivityType } from 'discord.js';
 
 export function createClient(): Client {
   return new Client({
@@ -7,5 +7,12 @@ export function createClient(): Client {
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.MessageContent,
     ],
+    presence: {
+      status: 'online',
+      activities: [{
+        name: 'Just keeping an eye on things',
+        type: ActivityType.Custom,
+      }],
+    },
   });
 }
